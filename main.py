@@ -12,14 +12,28 @@ def main():
     print("Starting Asteroids!")
     print(f"Screen width: {SCREEN_WIDTH}")
     print(f"Screen height: {SCREEN_HEIGHT}")
-    while True:
+
+	# Main game loop
+    running = True
+    while running:
+        # Calculate delta time
+        dt = clock.tick(60) / 1000 # Convert milliseconds to seconds
+
+        # Handle events
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-               return
+               running = False
+
+        # Update game state
+        player.update(dt)
+
+        # Render/draw everything	   
         screen.fill((0,0,0))
         player.draw(screen)
+        # ...other drawing code...
+
         pygame.display.flip()
-        dt = clock.tick(60) / 1000 # Convert milliseconds to seconds
+        
     
 
 
