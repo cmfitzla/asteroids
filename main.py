@@ -51,7 +51,8 @@ def main():
 		for asteroid in asteroids:
 			for bullet in shots:
 				if bullet.collisions(asteroid):
-					asteroid.kill()
+					new_asteroids = asteroid.split()
+					asteroids.add(*new_asteroids)
 					bullet.kill()
 
 		# Render/draw everything	   
